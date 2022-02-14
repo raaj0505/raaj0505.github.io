@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>Raju kumar | Software Developer | raaj0505@gmail.com</title>
+	<title>Raju Kumar | Technical Lead | emailatraju@gmail.com</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 	<meta name="keywords" content="" />
@@ -17,19 +17,23 @@
 
 </head>
 <body>
+	<div align="top"><button onclick="downloadAsPdf()" class="download" id="download">Download Resume</button>
+		<div class="hide" id="loading"><img height="25px" src="images/loading1.gif"/></div>
+	</div>
+
 <div id="doc2" class="yui-t7">
-	<div id="inner">
+	<div id="resume">
 		<div id="hd">
 			<div class="yui-gc">
 				<div class="yui-u first">
 					<h1>Raju Kumar</h1>
-					<h2>Software Developer</h2>
+					<h2>Full Stack Developer</h2>
 				</div>
 
 				<div class="yui-u">
 					<div class="contact-info">
 						<!-- <h3><a id="pdf" href="#">Download PDF</a></h3> -->
-						<h3><a href="mailto:raaj0505@gmail.com">raaj0505@gmail.com</a></h3>
+						<h3><a href="mailto:raaj0505@gmail.com">emailatraju@gmail.com</a></h3>
 						<h3>(+91) -7397990500</h3>
 					</div><!--// .contact-info -->
 				</div>
@@ -81,7 +85,7 @@
 									<h2>Languages</h2>
 									<li>Java</li>
 									<li>JavaScript</li>
-									<li>Python</li>
+									<li>Python(Beginner)</li>
 									<li class="last">C</li>
 								</div>
 
@@ -89,6 +93,7 @@
 									<h2>Frameworks</h2>
 									<li><a href='https://projects.spring.io/spring-framework/' target='_blank'>Spring</a></li>
 									<li><a href='https://angularjs.org/' target='_blank'>AngularJS</a></li>
+									<li><a href='https://angular.io/' target='_blank'>Angular 2+</a></li>
 									<li class="last"><a href='https://projects.spring.io/spring-boot/' target='_blank'>Spring Boot</a></li>
 								</div>
 
@@ -111,32 +116,29 @@
 
 							<div class="job">
 								<h2>PTC Software India Pvt Ltd</h2>
-								<h3>Software Specialist</h3>
-								<h4>2015- Present</h4>
+								<h3>Technical Lead</h3>
+								<h4>2020-Present</h4>
+								<p>Progressively develop the product requirment </p>
+							</div>
+							<div class="job">
+								<h2>Rocket Software India Pvt Ltd</h2>
+								<h3>Software Developer II</h3>
+								<h4>2019-2020</h4>
+								<p>Worked and developed MVIS service using Java and WebFlux </p>
+							</div>
+							<div class="job">
+								<h2>PTC Software India Pvt Ltd</h2>
+								<h3>Senior Software Specialist</h3>
+								<h4>2016-2019</h4>
 								<p>Progressively develop the product requirment </p>
 							</div>
 
 							<div class="job">
 								<h2>Saggezza India Pvt Ltd</h2>
 								<h3>Software Developer</h3>
-								<h4>2014-2015</h4>
+								<h4>2014-2016</h4>
 								<p>Developed e commerce requirement with OpenApi </p>
 							</div>
-
-							<!-- <div class="job">
-								<h2>Microsoft</h2>
-								<h3>Principal and Creative Lead</h3>
-								<h4>2004-2005</h4>
-								<p>Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials. </p>
-							</div>
-
-
-							<div class="job last">
-								<h2>International Business Machines (IBM)</h2>
-								<h3>Lead Web Designer</h3>
-								<h4>2001-2004</h4>
-								<p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.</p>
-							</div> -->
 
 						</div><!--// .yui-u -->
 					</div><!--// .yui-gf -->
@@ -164,12 +166,10 @@
 		</div><!--// bd -->
 
 		<div id="ft">
-			<p>Raju Kumar &mdash; <a href="mailto:raaj0505@gmail.com">raaj0505@gmail.com</a> &mdash; (+91) -7397990500</p>
+			<p>Raju Kumar &mdash; <a href="mailto:raaj0505@gmail.com">emailatraju@gmail.com</a> &mdash; (+91) -7397990500</p>
 		</div><!--// footer -->
 
 	</div><!-- // inner -->
-
-	<div align="top"><button onclick="downloadAsPdf()" style="color:white;background-color:black;width:15em;height:4em;">Download PDF</button></div>
 
 </div><!--// doc -->
 
@@ -185,15 +185,26 @@
 // }
 
 function downloadAsPdf(){
- var element = document.getElementById('inner');
+var downloadButton = document.getElementById('download');
+var loading = document.getElementById('loading');
+
+downloadButton.disabled = true;
+loading.classList.remove("hide");
+
+ var element = document.getElementById('resume');
+ var d = new Date();
 html2pdf(element, {
   margin:       0.5,
-  filename:     'RajuKumar-SoftwareDeveloper.pdf',
-  image:        { type: 'jpeg', quality: 1 },
+  filename:     'Raju_Kumar_Full_Stack_Developer_' + [d.getDate(), d.getMonth()+1, d.getFullYear()].join("_") + ".pdf",
+  image:        { type: 'png', quality: 1 },
   enableLinks: true,
   html2canvas:  { dpi: 192, letterRendering: true },
   jsPDF:        { unit: 'in', format: 'a3'}
 });
+setTimeout( function() { 
+		downloadButton.disabled = false;
+		loading.classList.add("hide"); 
+	}, 3000);
 }
 
 
